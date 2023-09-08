@@ -21,7 +21,7 @@ export const authOptions: AuthOptions = {
     CredentialsProvider({
       name: "credentials",
       credentials: {
-        email: { label: "email", type: "text" },
+        email: { label: "email", type: "email" },
         password: { label: "password", type: "password" },
       },
       async authorize(credentials) {
@@ -44,7 +44,7 @@ export const authOptions: AuthOptions = {
           user.hashedPassword
         );
 
-        if (isCorrectPassword) {
+        if (!isCorrectPassword) {
           throw new Error("Invalid credentials");
         }
 
@@ -52,7 +52,6 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
-
   pages: {
     signIn: "/",
   },
