@@ -47,8 +47,8 @@ function RegisterModal() {
     <div className="flex flex-col gap-4">
       <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
       <Input
-        id="fullname"
-        label="Fullname"
+        id="name"
+        label="Name"
         disabled={isLoading}
         register={register}
         errors={errors}
