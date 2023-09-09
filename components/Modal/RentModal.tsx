@@ -11,6 +11,7 @@ import { allCategories } from "../Navbar/Categories";
 import CategoryInput from "../Input/CategoryInput";
 import CountrySelect from "../Input/CountrySelect";
 import Counter from "../Input/Counter";
+import ImageUpload from "../Input/ImageUpload";
 
 enum STEPS {
   CATEGORY = 0,
@@ -52,6 +53,7 @@ const RentModal = () => {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
+  const imageSrc = watch("imageSrc");
 
   const Map = useMemo(
     () =>
@@ -118,8 +120,8 @@ const RentModal = () => {
           subtitle="Help guests find you"
         />
         <CountrySelect
-          value={location}
           onChange={(value) => setCustomValue("location", value)}
+          value={location}
         />
         <Map center={location?.latlng} />
       </div>
@@ -136,22 +138,37 @@ const RentModal = () => {
         <Counter
           title="Guests"
           subtitle="How many guests do you allow?"
-          value={guestCount}
           onChange={(value) => setCustomValue("guestCount", value)}
+          value={guestCount}
         />
         <hr />
         <Counter
           title="Rooms"
           subtitle="How many rooms do you have?"
-          value={roomCount}
           onChange={(value) => setCustomValue("roomCount", value)}
+          value={roomCount}
         />
         <hr />
         <Counter
           title="Bathrooms"
           subtitle="How many bathrooms do you have?"
-          value={bathroomCount}
           onChange={(value) => setCustomValue("bathroomCount", value)}
+          value={bathroomCount}
+        />
+      </div>
+    );
+  }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Add a photo of your place"
+          subtitle="Show guests what your place looks like!"
+        />
+        <ImageUpload
+          onChange={(value) => setCustomValue("imageSrc", value)}
+          value={imageSrc}
         />
       </div>
     );
