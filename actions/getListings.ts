@@ -1,27 +1,25 @@
 import prisma from "@/libs/prismadb";
 
 export interface IListingsParams {
-  guestCount?: number | null;
-  roomCount?: number | null;
-  bathroomCount?: number | null;
-  startDate?: string | null;
-  endDate?: string | null;
-  locationValue?: string | null;
-  category?: string | null;
+  guestCount?: number;
+  roomCount?: number;
+  bathroomCount?: number;
+  startDate?: string;
+  endDate?: string;
+  locationValue?: string;
+  category?: string;
 }
 
-export default async function getListings(params: IListingsParams) {
+export default async function getListings({
+  roomCount,
+  guestCount,
+  bathroomCount,
+  locationValue,
+  startDate,
+  endDate,
+  category,
+}: IListingsParams) {
   try {
-    const {
-      roomCount,
-      guestCount,
-      bathroomCount,
-      locationValue,
-      startDate,
-      endDate,
-      category,
-    } = params;
-
     let query: any = {};
 
     if (category) {
