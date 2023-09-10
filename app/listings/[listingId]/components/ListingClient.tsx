@@ -65,7 +65,7 @@ const ListingClient = ({
       .post("/api/reservations", {
         totalPrice,
         startDate: dateRange.startDate,
-        endData: dateRange.endDate,
+        endDate: dateRange.endDate,
         listingId: listing?.id,
       })
       .then(() => {
