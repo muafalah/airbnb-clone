@@ -1,14 +1,14 @@
 import prisma from "@/libs/prismadb";
 
 export interface IListingsParams {
-  userId?: string;
-  guestCount?: number;
-  roomCount?: number;
-  bathroomCount?: number;
-  startDate?: string;
-  endDate?: string;
-  locationValue?: string;
-  category?: string;
+  userId?: string | null;
+  guestCount?: number | null;
+  roomCount?: number | null;
+  bathroomCount?: number | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  locationValue?: string | null;
+  category?: string | null;
 }
 
 export default async function getListings(params: IListingsParams) {
